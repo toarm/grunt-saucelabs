@@ -23,9 +23,9 @@ module.exports = function (grunt) {
     function scheduleNextJob() {
       if (running < limit) {
         running += 1;
-        return requestDelay ? q.delay(q, running * requestDelay) : q();
+        return requestDelay ? q.delay(running * requestDelay) : q();
       }
-
+      
       if (!semaphore) {
         semaphore = q.defer();
       }
